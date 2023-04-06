@@ -4,10 +4,17 @@ import SingleColor from './SingleColor';
 const GridColor = () => {
     //DATA
     const [color, setColor] = useState('#EE4266');
+    const [shade, setShade] = useState(10);
+
     //FUNCTION
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('submit')
+        if (color && shade) {
+            setColor(color)
+            setShade(shade)
+        } else {
+            alert('fill the form')
+        }
     }
 
     //RETURN
@@ -24,19 +31,22 @@ const GridColor = () => {
                         </label>
                         <input id="color" type="color" name="color"
                             className="form-control form-control-color"
-                            title="Choose your color" />
+                            title="Choose your color" value={color}
+                            onChange={(e) => setColor(e.target.value)}
+                        />
                     </div>
                     {/* Number square */}
                     <div className="row g-3 align-items-center mb-3">
                         <div className="col-auto">
-                            <label htmlFor="number" type="number"
+                            <label htmlFor="shade" type="number"
                                 className="col-form-label">
                                 Number of shade
                             </label>
                         </div>
                         <div className="col-auto">
-                            <input id="number" type="number" name="number"
-                                className="form-control form-control-sm" ></input>
+                            <input id="shade" type="number" name="shade"
+                                className="form-control form-control-sm"
+                                value={shade} onChange={(e) => setShade(e.target.value)}></input>
                         </div>
                     </div>
                     {/* BTN */}
