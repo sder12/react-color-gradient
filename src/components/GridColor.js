@@ -1,21 +1,29 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import SingleColor from './SingleColor';
 
 const GridColor = () => {
     //DATA
     const [color, setColor] = useState('#EE4266');
     const [shade, setShade] = useState(10);
-
+    const [grid, setGrid] = useState({
+        color: '#EE4266', shade: 10
+    })
     //FUNCTION
     const handleSubmit = (e) => {
         e.preventDefault();
         if (color && shade) {
-            setColor(color)
-            setShade(shade)
+            setGrid({ color, shade })
         } else {
             alert('fill the form')
         }
     }
+
+    const createGradient = () => {
+
+    }
+    useEffect(() => {
+        console.log(grid);
+    }, [grid]);
 
     //RETURN
     return (
