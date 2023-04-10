@@ -23,3 +23,7 @@ code {
   border: .1em solid white;
   border-radius: .8em;
 }
+
+.col-colorHex h5 {
+  cursor: pointer;
+}
