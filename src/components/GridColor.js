@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import SingleColor from './SingleColor';
+import { LightenDarkenColor } from '../utils/helpers';
+
 
 const GridColor = () => {
     //DATA
     const [color, setColor] = useState('#EE4266');
-    const [shade, setShade] = useState(10);
+    const [shade, setShade] = useState(21);
     const [grid, setGrid] = useState({
-        color: '#EE4266', shade: 10
+        color: '#EE4266', shade: 21
     })
+    const [arrayGrid, setArrayGrid] = useState([])
+
     //FUNCTION
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -18,12 +22,28 @@ const GridColor = () => {
         }
     }
 
-    const createGradient = () => {
-
+    const createGradient = (grid) => {
+        let arr = [];
+        for (let i = 0; i < grid.shade; i++) {
+            arr[i] = {
+                id: i,
+                main: grid.color,
+                colorgradient: '',
+            }
+        }
+        let num = 0;
+        for (let i = 0; i < arr.length; i++) {
+            arr[i].colorgradient = LightenDarkenColor(grid.color, num);
+            num += 8;
+        }
+        setArrayGrid(arr)
     }
+
+
     useEffect(() => {
-        console.log(grid);
+        createGradient(grid);
     }, [grid]);
+
 
     //RETURN
     return (
@@ -65,7 +85,13 @@ const GridColor = () => {
             </div>
 
             {/* GRID */}
-            <SingleColor />
+            <div className='row mt-2'>
+                {
+                    arrayGrid !== [] ?
+                        arrayGrid.map((el) => <SingleColor key={el.id} {...el} />)
+                        : ''
+                }
+            </div>
         </div>
     )
 }

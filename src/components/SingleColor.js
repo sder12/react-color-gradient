@@ -1,8 +1,14 @@
-import React from 'react'
+import React from 'react';
 
-const SingleColor = () => {
+const SingleColor = (props) => {
     return (
-        <div>SingleColor</div>
+        <div className='col-4 col-colorHex'
+            style={{
+                backgroundColor: `${props.colorgradient}`
+            }}>
+            {props.colorgradient}
+        </div >
+
     )
 }
 
