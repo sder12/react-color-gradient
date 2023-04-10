@@ -2,7 +2,7 @@ import React from 'react';
 
 const SingleColor = (props) => {
     const copyHex = () => {
-        alert(props.colorgradient)
+        navigator.clipboard.writeText(props.colorgradient);
     }
 
     return (
@@ -13,6 +13,7 @@ const SingleColor = (props) => {
             <h5 onClick={copyHex} >
                 {props.colorgradient}
             </h5>
+
         </div >
 
     )
