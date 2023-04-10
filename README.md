@@ -11,6 +11,7 @@ This is my fifth project made with <a href="https://react.dev/"> React </a>
 - the user choose a color and insert a number of shades
 - by clicking a btn the form is activated 
 - return a list of HEX colors
+- by clicking on the text the color is copied 
 
 
 <hr/>
